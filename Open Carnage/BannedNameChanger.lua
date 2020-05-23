@@ -1,12 +1,12 @@
 -- Banned Name Changer by Enclusion (https://opencarnage.net/index.php?/profile/2156-enclusion/)
--- Version: 1.1
+-- Version: 1.2
 -- Uploaded: OpenCarnage.net
 -- Credits:
 	-- OnNameRequest by Devieth (https://opencarnage.net/index.php?/profile/1597-devieth/)
 
 -- CONFIG START
 
-local banned = {'name1', 'gamerword', 'nword', 'fword'}
+local banned = {'ebon4', 'gamerword', 'nword', 'fword'}
 local replaceWith = "Blocked" -- 
 
 -- CONFIG END
@@ -40,6 +40,9 @@ function OnNameRequest(PlayerIndex, Name)
 		return replaceWith -- Send back the decidred name.
 	end
 	if count ~= 0 then
+		if count ==  99 then
+			count = 0
+		end
 		count = count + 1
 		newReplace = replaceWith .. count
 		return newReplace
