@@ -10,6 +10,7 @@
 
 ------------------------------------------------------------------------------
 -- CONFIG START
+------------------------------------------------------------------------------
 
 local block_names = true
 local block_chat = true
@@ -30,6 +31,7 @@ ACTION_TIME = 5
 -- Message to tell to the player for swearing. Set to "" to not send a message.
 BAD_WORD_BLOCK = "Your message has been blocked for profanity."
 
+------------------------------------------------------------------------------
 -- CONFIG END
 ------------------------------------------------------------------------------
 
