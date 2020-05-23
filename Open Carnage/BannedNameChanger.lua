@@ -11,7 +11,7 @@
 ------------------------------------------------------------------------------
 -- CONFIG START
 
-local block_names = false
+local block_names = true
 local block_chat = true
 
 local banned = {
