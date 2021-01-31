@@ -1,5 +1,5 @@
 -- Weapon Weight
--- Version: 0.1
+-- Version: 0.2
 -- Uplodaed: OpenCarnage.net
 -- Credits:
 	-- Snagged the weapon tags from Backpack weapons by aLTis (https://opencarnage.net/index.php?/profile/1639-altis/)
