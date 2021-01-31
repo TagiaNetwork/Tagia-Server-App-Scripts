@@ -2,14 +2,9 @@
 -- Version: 0.1
 -- Uplodaed: OpenCarnage.net
 -- Credits:
-
---------------------
--- Configuration: --
---------------------
-
-local enabled = true
-
---------------------
+-- This script uses SAPP events. Example
+-- event_start $map:bloodgulch 'w8 2;cevent shotgun1'
+-- event_custom $ename:shotgun1 'lua_call "WeaponSpawner" "spawnWeapon" "97.73" "-155.51" "2.31";w8 32;cevent shotgun1'
 
 api_version = "1.12.0.0"
 ce, client_info_size = 0x40, 0xEC
@@ -33,12 +28,9 @@ function HasObject(ObjectID)
     end
 end
 
-
-function spawnWeapon()
+function spawnWeapon(k, t1, t2, t3, x, y, z)
     if object ~= nil and HasObject(object) ~= true then
         destroy_object(object)
     end
-    object = spawn_object("weap", "weapons\\shotgun\\shotgun", 97.73, -155.51, 2.31)
-
-    cprint("spawnWeapon() executed")
+    object = spawn_object(k, t1 .. "\\" .. t2 .. "\\" .. t3 , x, y, z)
 end
