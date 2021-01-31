@@ -67,12 +67,6 @@ function OnPlayerSpawn(PlayerIndex)
     SetSpeedOfPlayer(PlayerIndex, player_weight)
 end
 
-function GetName(object)
-    if object ~= nil then
-        return read_string8(read_dword(read_u16(object) * 32 + 0x40440038))
-    end
-end
-
 function SetSpeedOfPlayer(PlayerIndex,Speed)
     Speed = math.floor(Speed * 40 + 0.5) / 40
     local player = get_player(PlayerIndex)
