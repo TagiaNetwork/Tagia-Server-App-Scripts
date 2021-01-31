@@ -1,5 +1,5 @@
 -- Weapon Weight
--- Version: 0.2
+-- Version: 0.3
 -- Uplodaed: OpenCarnage.net
 -- Credits:
 	-- Snagged the weapon tags from Backpack weapons by aLTis (https://opencarnage.net/index.php?/profile/1639-altis/)
@@ -35,12 +35,14 @@ local WEAPONS = {
 
 
 function OnScriptLoad()
-    register_callback(cb["EVENT_JOIN"],"OnPlayerJoin")
-    register_callback(cb["EVENT_LEAVE"],"OnPlayerLeave")
-    register_callback(cb["EVENT_SPAWN"],"OnPlayerSpawn")
-    register_callback(cb["EVENT_VEHICLE_ENTER"],"OnVehicleEnter")
-    register_callback(cb["EVENT_VEHICLE_EXIT"],"OnVehicleExit")
-    register_callback(cb["EVENT_TICK"],"OnTick")
+    if enabled == true then
+        register_callback(cb["EVENT_JOIN"],"OnPlayerJoin")
+        register_callback(cb["EVENT_LEAVE"],"OnPlayerLeave")
+        register_callback(cb["EVENT_SPAWN"],"OnPlayerSpawn")
+        register_callback(cb["EVENT_VEHICLE_ENTER"],"OnVehicleEnter")
+        register_callback(cb["EVENT_VEHICLE_EXIT"],"OnVehicleExit")
+        register_callback(cb["EVENT_TICK"],"OnTick")
+    end
     if halo_type == "PC" then execute_command("quit")end --play custom edition lul
 end
 function OnScriptUnload() end
