@@ -3,7 +3,7 @@
 -- Uplodaed: OpenCarnage.net
 -- Credits:
 	-- Snagged the weapon tags from Backpack weapons by aLTis (https://opencarnage.net/index.php?/profile/1639-altis/)
-	-- SetSpeedOfPlayer function by Kavawuvi (https://opencarnage.net/index.php?/profile/1240-kavawuvi/)
+	-- SetSpeedOfPlayer function from sprint script by Kavawuvi (https://opencarnage.net/index.php?/profile/1240-kavawuvi/)
 	-- Tucker for OpenCarnage forums
 
 --------------------
@@ -11,6 +11,7 @@
 --------------------
 
 local enabled = true
+local player_weight = 1 -- how heavy the player is by default
 
 --------------------
 
@@ -19,17 +20,17 @@ ce, client_info_size = 0x40, 0xEC
 
 
 local WEAPONS = {
-    ["weapons\\assault rifle\\assault rifle"] = {["name"] = "ar", ["weight"] = "0"},
-    ["weapons\\shotgun\\shotgun"] = {["name"] = "sg", ["weight"] = "0"},
-    ["weapons\\sniper rifle\\sniper rifle"] = {["name"] = "sr", ["weight"] = "0"},
+    ["weapons\\assault rifle\\assault rifle"] = {["name"] = "ar", ["weight"] = "0.2"},
+    ["weapons\\shotgun\\shotgun"] = {["name"] = "sg", ["weight"] = "0.3"},
+    ["weapons\\sniper rifle\\sniper rifle"] = {["name"] = "sr", ["weight"] = "0.2"},
     ["weapons\\pistol\\pistol"] = {["name"] = "p", ["weight"] = "0"},
     ["weapons\\plasma pistol\\plasma pistol"] = {["name"] = "pp", ["weight"] = "0"},
-    ["weapons\\needler\\mp_needler"] = {["name"] = "n", ["weight"] = "0"},
-    ["weapons\\plasma rifle\\plasma rifle"] = {["name"] = "pr", ["weight"] = "0"},
-    ["weapons\\rocket launcher\\rocket launcher"] = {["name"] = "rl", ["weight"] = "0"},
+    ["weapons\\needler\\mp_needler"] = {["name"] = "n", ["weight"] = "0.2"},
+    ["weapons\\plasma rifle\\plasma rifle"] = {["name"] = "pr", ["weight"] = "0.2"},
+    ["weapons\\rocket launcher\\rocket launcher"] = {["name"] = "rl", ["weight"] = "0.3"},
     ["weapons\\flamethrower\\flamethrower"] = {["name"] = "f", ["weight"] = "0"},
-    ["weapons\\plasma_cannon\\plasma_cannon"] = {["name"] = "frg", ["weight"] = "0"},
-    ["weapons\\gravity rifle\\gravity rifle"] = {["name"] = "ar", ["weight"] = "0"},
+    ["weapons\\plasma_cannon\\plasma_cannon"] = {["name"] = "frg", ["weight"] = "0.3"},
+    ["weapons\\gravity rifle\\gravity rifle"] = {["name"] = "ar", ["weight"] = "0.2"},
 }
 
 
@@ -63,7 +64,7 @@ function OnVehicleExit(PlayerIndex)
 end
 
 function OnPlayerSpawn(PlayerIndex)
-    SetSpeedOfPlayer(PlayerIndex, 1)
+    SetSpeedOfPlayer(PlayerIndex, player_weight)
 end
 
 function GetName(object)
@@ -100,6 +101,7 @@ function OnTick()
                 local primary_weapon_name = GetName(primary_weapon)
                 local secondary_weapon_name = GetName(secondary_weapon)
                 local weight = 0
+
                 if primary_weapon_name ~= nil and lookup_tag("weap", primary_weapon_name) ~= nil and WEAPONS[primary_weapon_name]["name"] ~= nil then
                     weight = weight + WEAPONS[primary_weapon_name]["weight"]
                 end
@@ -109,7 +111,7 @@ function OnTick()
                 end
 
                 if inVehicle[PlayerIndex] == false then
-                    SetSpeedOfPlayer(PlayerIndex,1 - weight)
+                    SetSpeedOfPlayer(PlayerIndex,player_weight - weight)
                 end
 
             end
